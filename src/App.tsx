@@ -18,13 +18,12 @@ import { TwoGateWorkspace } from './components/TwoGateWorkspace';
 import { MemoryVaultViewer } from './components/MemoryVaultViewer';
 import { PolicyMatrixView } from './components/PolicyMatrixView';
 import { AuditLogView } from './components/AuditLogView';
-import { BenchmarkEvaluation } from './components/BenchmarkEvaluation';
 import { runJevPipeline } from './lib/gatewayEngine';
 import { TEST_CASES } from './lib/testCases';
 
 export default function App() {
   const [session, setSession] = useState<AuthSession | null>(null);
-  const [activeTab, setActiveTab] = useState<'gateway' | 'memory' | 'policy' | 'audit' | 'benchmarks'>('gateway');
+  const [activeTab, setActiveTab] = useState<'gateway' | 'memory' | 'policy' | 'audit'>('gateway');
   const [pipelineResult, setPipelineResult] = useState<PipelineExecutionResult | null>(null);
   const [auditLogs, setAuditLogs] = useState<AuditRecord[]>([]);
   const [isRunning, setIsRunning] = useState<boolean>(false);
@@ -167,8 +166,6 @@ export default function App() {
         {activeTab === 'audit' && (
           <AuditLogView logs={auditLogs} onClearLogs={handleClearLogs} />
         )}
-
-        {activeTab === 'benchmarks' && <BenchmarkEvaluation />}
       </main>
 
       {/* Minimal Claude-style Footer */}

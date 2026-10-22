@@ -3,8 +3,8 @@ import { AuthSession } from '../types/jev';
 
 interface HeaderProps {
   session: AuthSession;
-  activeTab: 'gateway' | 'memory' | 'policy' | 'audit' | 'benchmarks';
-  setActiveTab: (tab: 'gateway' | 'memory' | 'policy' | 'audit' | 'benchmarks') => void;
+  activeTab: 'gateway' | 'memory' | 'policy' | 'audit';
+  setActiveTab: (tab: 'gateway' | 'memory' | 'policy' | 'audit') => void;
   onLogout: () => void;
 }
 
@@ -30,7 +30,7 @@ export const Header: React.FC<HeaderProps> = ({
         </a>
       </div>
 
-      {/* Zone 2: 4-5 clean single-line text navigation links */}
+      {/* Zone 2: Clean single-line text navigation links */}
       <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-[#66635a]">
         <button
           onClick={() => setActiveTab('gateway')}
@@ -74,17 +74,6 @@ export const Header: React.FC<HeaderProps> = ({
           }`}
         >
           Audit Log
-        </button>
-
-        <button
-          onClick={() => setActiveTab('benchmarks')}
-          className={`cursor-pointer whitespace-nowrap shrink-0 transition-colors ${
-            activeTab === 'benchmarks'
-              ? 'text-[#1a1915] font-semibold border-b-2 border-[#1a1915] pb-0.5'
-              : 'hover:text-[#1a1915]'
-          }`}
-        >
-          Benchmark Eval
         </button>
       </nav>
 

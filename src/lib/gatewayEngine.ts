@@ -38,7 +38,7 @@ export async function runJevPipeline(
   // STAGE 2: Cheap Detectors
   const t0 = performance.now();
   const detectedSpans = detectCandidateSpans(query);
-  const detectTime = Math.round(performance.now() - t0 + Math.random() * 6 + 8);
+  const detectTime = Math.max(1, Math.round(performance.now() - t0));
 
   // STAGE 3: JEV Pre-Judge (Small fast judge model analyzes candidate spans in context)
   const t1 = performance.now();
@@ -49,7 +49,7 @@ export async function runJevPipeline(
       destination: ctx.destination,
     })
   );
-  const jevPreTime = Math.round(performance.now() - t1 + Math.random() * 18 + 32);
+  const jevPreTime = Math.max(1, Math.round(performance.now() - t1));
 
   // STAGE 4: Deterministic Policy Engine ("JEV judges, code decides")
   const decisions = judgments.map((judgment, idx) => {
@@ -91,7 +91,7 @@ export async function runJevPipeline(
     // Generate context-appropriate model answer based on role and sanitized text
     rawLlmOutput = generateContextualModelAnswer(sanitizedText, ctx.role, ctx.purpose);
   }
-  const llmTime = Math.round(performance.now() - t2 + Math.random() * 45 + 180);
+  const llmTime = Math.max(1, Math.round(performance.now() - t2));
 
   // STAGE 7: Gate 2 Output Inspection (Step A: Code search vs in-memory vault + Step B: JEV post-check)
   const t3 = performance.now();
@@ -100,7 +100,7 @@ export async function runJevPipeline(
     purpose: ctx.purpose,
     destination: ctx.destination,
   });
-  const gate2Time = Math.round(performance.now() - t3 + Math.random() * 12 + 18);
+  const gate2Time = Math.max(1, Math.round(performance.now() - t3));
 
   // STAGE 8: Rehydration
   // "The rehydrate rule only restores what policy already allowed for this viewer."
