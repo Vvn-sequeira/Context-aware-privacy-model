@@ -1,0 +1,6 @@
+{
+  "name": "JEV Privacy Gateway",
+  "description": "Context-aware two-gate privacy gateway between users and AI models with in-memory sanitization vaults, deterministic policy enforcement, and output leak detection.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

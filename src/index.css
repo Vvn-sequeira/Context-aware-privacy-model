@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Lora", "Charter", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #faf9f5;
+  color: #1a1915;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar for clean memory inspector */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #dcd8ce;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c3beaf;
+}
